@@ -245,12 +245,28 @@ class mailsController {
                         //quita las etiquetas html
                         $aux['content'] = preg_replace('/\\<(?i).*?>/','',$aux['content']);
                         $aux['content'] = str_replace("<'|'>", '', $aux['content']);
-
-                        //convierte los saltos de linea en br
-                        $aux['content'] = str_replace(PHP_EOL, '<br/>', $aux['content']);
-
+						
+                        // Detect multiple line breaks
+                        $aux['content'] = preg_replace("/([\r\n]{4,}|[\n]{2,}|[\r]{2,})/", "<br/>", $aux['content']);
+                        $aux['content'] = str_replace('/\s\s+/', ' ', $aux['content']);
+                      	
                         //quita las etiquetas de imagenes (está entre corchetes)
                         $aux['content'] = preg_replace('/\\[.*?\\]/','',$aux['content']);
+                        
+                        // Sentence splitting
+                        $paragraphs = explode("<br/>", $aux['content']);
+                        
+                        $sentenceArray = array();
+                        foreach ($paragraphs as $key => $value){
+                        	// Split paragraph into sentences
+                        	$sentences = preg_split('/(?<=[.?!])\s+(?=[a-z])/i', $value);
+                        	$sentenceArray = array_merge($sentenceArray, $sentences); 
+                        }
+                        
+                        $aux['content'] = "";
+                        foreach ($sentenceArray as $key => $value){
+                        	$aux['content'] .= $value . "<br/>";
+                        }
                     }
 
                 }
@@ -322,7 +338,7 @@ class mailsController {
 
             $mail->From = $from;
             $mail->FromName = $fname;
-            $recipients = split(',', $_POST['mail']);
+            $recipients = explode(',', $_POST['mail']);
             foreach ($recipients as $value) {
                 $mail->AddAddress($value);
             }

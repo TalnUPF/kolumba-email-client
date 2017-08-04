@@ -31,7 +31,7 @@
 
     <link rel='icon' href='<?php echo $helper->urlBase(); ?>/public/favicon.ico'/>
 
-    <title><?=$lang['PAGE_TITLE']?></title>
+    <title><?php echo $lang['PAGE_TITLE'];?></title>
 
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#18BC9C">
@@ -47,7 +47,7 @@
     <!-- Custom CSS -->
     <link href='<?php echo $helper->urlBase(); ?>/public/css/freelancer.css' rel='stylesheet'>
     <link href='<?php echo $helper->urlBase(); ?>/public/css/style.css' rel='stylesheet'>
-
+	<link href='<?php echo $helper->urlBase(); ?>/public/css/restyle.css?v=<?php echo rand() + ""; ?>>' rel='stylesheet'>
 
     <!-- Custom Fonts -->
     <link href='<?php echo $helper->urlBase(); ?>/public/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
@@ -93,10 +93,18 @@
     <nav class='navbar navbar-default navbar-fixed-top'>
 
         <div class='container'>
-          <a class='navbar-brand' href='<?php echo $helper->url('mails','getAll'); ?>'><?=$lang['PAGE_TITLE']?></a>
+          <a class='navbar-brand' href='<?php echo $helper->url('mails','getAll'); ?>'><?php echo $lang['PAGE_TITLE']; ?></a>
           <div class='user'>
-            <a href="?lang=es"><?php echo $lang['ES'];?></a> | <a href="?lang=en"><?php echo $lang['EN'];?></a>
-            <?=$lang['WELCOME']?>, <?php echo ($_SESSION['user']->name) ? $_SESSION['user']->name : $_SESSION['user']->email ?>
+            <?php echo $lang['HEADER_PICTOGRAM_SET']; ?>: 
+            <a href="?picto=beta" <?php if($_SESSION['picto'] == 'beta') { echo "style='color:white;  text-decoration: underline;'"; }?>>beta</a> | 
+            <a href="?picto=sclera" <?php if($_SESSION['picto'] == 'sclera') { echo "style='color:white;  text-decoration: underline;'"; }?>>sclera</a> |
+            <a href="?picto=arasaac" <?php if($_SESSION['picto'] == 'arasaac') { echo "style='color:white;  text-decoration: underline;'"; }?>>arasaac</a>
+            &nbsp;&nbsp;
+            Language: 
+            <a href="?lang=es" <?php if($_SESSION['lang'] == 'es') { echo "style='color:white;  text-decoration: underline;'"; }?>><?php echo $lang['ES'];?></a> | 
+            <a href="?lang=en" <?php if($_SESSION['lang'] == 'en') { echo "style='color:white;  text-decoration: underline;'"; }?>><?php echo $lang['EN'];?></a>
+            &nbsp;&nbsp;       
+            <?php echo $lang['WELCOME']; ?>, <?php echo ($_SESSION['user']->name) ? $_SESSION['user']->name : $_SESSION['user']->email ?>
           </div>
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class='navbar-header page-scroll'>
@@ -118,7 +126,7 @@
 
                     <li class='page-scroll btn btn-xs btn-success <?php echo isset($vars['INBOX']) ? 'active' : ''; ?>'  style="margin: 2px;">
                         <a href='<?php echo $helper->url('mails','getAll'); ?>' style="background: none;">
-                          <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/inbox.png' alt='<?=$lang['RECEIVED']?>'/> <?=$lang['RECEIVED']?> <?php echo isset($vars['Unreads']) && $vars['Unreads']>0 ? '('.$vars['Unreads'].')' : ''; ?>
+                          <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/inbox.png' alt='<?php echo $lang['RECEIVED']; ?>'/> <?php echo $lang['RECEIVED']; ?> <?php echo isset($vars['Unreads']) && $vars['Unreads']>0 ? '('.$vars['Unreads'].')' : ''; ?>
                         </a>
                       </li>
 
@@ -126,26 +134,26 @@
 
                     <li class='page-scroll btn btn-xs btn-success <?php echo isset($vars['SENT']) ? 'active' : ''; ?>'  style="margin: 2px;">
                       <a href='<?php echo $helper->url('mails','getAll', 'SENT'); ?>' style="background: none;">
-                        <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/sent.png' alt='<?=$lang['SENT']?>' /> <?=$lang['SENT']?>
+                        <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/sent.png' alt='<?php echo $lang['SENT']; ?>' /> <?php echo $lang['SENT']; ?>
                       </a>
                     </li>
 
 
                     <li class='page-scroll btn btn-xs btn-success <?php echo isset($vars['NEW']) ? 'active' : ''; ?>'  style="margin: 2px;">
                       <a href='<?php echo $helper->url('mails','newMail'); ?>' style="background: none;">
-                         <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/new.png' alt='<?=$lang['NEW_EMAIL']?>'/> <?=$lang['NEW_EMAIL']?>
+                         <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/new.png' alt='<?php echo $lang['NEW_EMAIL']; ?>'/> <?php echo $lang['NEW_EMAIL']; ?>
                       </a>
                     </li>
 
                     <li class='page-scroll btn btn-xs btn-success <?php echo isset($vars['CONTACTS']) ? 'active' : ''; ?>'  style="margin: 2px;">
                       <a href='<?php echo $helper->url('contacts','getAll'); ?>' style="background: none;">
-                        <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/contacts.png' alt='<?=$lang['CONTACTS']?>' /> <?=$lang['CONTACTS']?>
+                        <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/contacts.png' alt='<?php echo $lang['CONTACTS']; ?>' /> <?php echo $lang['CONTACTS']; ?>
                       </a>
                     </li>
 
                     <li class='page-scroll btn btn-xs btn-danger' style="margin: 2px;">
                       <a href='<?php echo $helper->url('account','logout'); ?>' style="background: none;">
-                        <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/exit.png' alt='<?=$lang['EXIT']?>'/> <?=$lang['EXIT']?>
+                        <img class='icono' src='<?php echo $helper->urlBase(); ?>/public/img/icons/exit.png' alt='<?php echo $lang['EXIT']; ?>'/> <?php echo $lang['EXIT']; ?>
                       </a>
                     </li>
                 </ul>

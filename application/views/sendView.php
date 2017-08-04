@@ -130,13 +130,13 @@ function cambiarPlantilla(template) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <button id="templateReceived" type="button" class="btn btn-success" aria-label="Left Align">
+                        <button id="templateReceived" type="button" class="btn btn-success btn-lg" aria-label="Left Align">
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <?php echo $lang['TEMPLATE_1_TITLE']; ?>
                         </button>
-                        <button id="templateNotUnderstand" type="button" class="btn btn-danger" aria-label="Left Align">
+                        <button id="templateNotUnderstand" type="button" class="btn btn-danger btn-lg" aria-label="Left Align">
                             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span> <?php echo $lang['TEMPLATE_2_TITLE']; ?>
                         </button>
-                        <button id="templateAttachedFailure" type="button" class="btn btn-danger" aria-label="Left Align">
+                        <button id="templateAttachedFailure" type="button" class="btn btn-danger btn-lg" aria-label="Left Align">
                             <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> <?php echo $lang['TEMPLATE_3_TITLE']; ?>
                         </button>
                     </td>

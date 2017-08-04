@@ -18,11 +18,12 @@
  * See the License for the specific language governing permissions & limitations
  * under the License.
  */
-define('HOST', 'http://kolumba.eu');
+define('HOST', 'http://HOSTNAME.DOMAIN');
 define('FOLDER_APP', '');
 define('TEXT2SPEECH', 'http://al.abletoinclude.eu/Text2Speech.php');
 define('TEXT2PICTO', 'http://al.abletoinclude.eu/Text2Picto.php');
-define('SIMPLEXT', 'http://al.abletoinclude.eu/Simplext.php');
+define('SIMPLEXT_ES', 'http://al.abletoinclude.eu/Simplext.php');
+define('SIMPLEXT_EN', 'http://al.abletoinclude.eu/Simplext.php');
 define('USE_TEXT_TO_PICTO', true);
 ?>
 

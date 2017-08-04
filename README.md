@@ -1,5 +1,5 @@
-# email-client
-Accessible E-mail Client
+# kolumba email-client
+Kolumba Accessible E-mail Client
 
 Kolumba is a very easy to use e-mail web client adapted to people with IDD so that they can use it at their working activity. 
  
@@ -17,16 +17,14 @@ The Accessible email App is described at http://able-to-include.com/accessible-s
 <name> Apache License, Version 2.0 </name>
 
 <url> http://www.apache.org/licenses/LICENSE-2.0 </url>
-
-<comments>
-The work represented by this file is partially funded by the ABLE-TO-INCLUDE project through the European Commission's ICT Policy Support Programme as part of the Competitiveness & Innovation Programme (Grant no.: 621055)
-
-Copyright © 2016, Ariadna Servicios Informáticos S.L.
+<comments> 
+The work represented by this file is partially funded by the Able to Include project through the European Commission's ICT Policy Support Programme as part of the Competitiveness and Innovation Programme (Grant no.: 621055)
+Copyright © 2017, Able to Include Consortium.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions & limitations under the License.
+See the License for the specific language governing permissions and limitations under the License.
 </comments>
 </license>

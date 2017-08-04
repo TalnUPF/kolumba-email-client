@@ -24,7 +24,7 @@
             <div class='container'>
                 <div class='row'>
                     <div class='col-lg-12'>
-                        Copyright &copy; 2015 <a href="http://www.asi-soft.com"><?=$lang['COPYRIGHT']?></a>
+                        Copyright &copy; 2017 <a href="<?=$lang['COPYRIGHT_URL']?>" target="_blank"><?=$lang['COPYRIGHT']?></a>
                     </div>
                 </div>
             </div>

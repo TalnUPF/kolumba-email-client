@@ -59,40 +59,48 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
     <script type="text/javascript" src="<?php echo $helper->urlBase(); ?>/public/js/audio_popup.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.audioplay').click(function() {
-                var texto = $(this).attr('title');
-                $.ajax({
-                    url: '<?php echo TEXT2SPEECH; ?>',
-                    type: 'GET',
-                    headers: {
-                      'Origin': 'http://kolumba.eu'
-                    },
-                    async: true,
-                    dataType : 'json',
-                    data: 'text='+texto+'&language=<?php echo $lang['TEXT2SPEECH_LANGUAGE'];?>',
-                    success: function(json) {
-                        $('#audio').attr('src',json.audioSpeech);
-                        if (running_iOS()) {
-                          document.getElementById('audioDiv').style.display = "block";
-                          document.getElementById('playPause').innerHTML = '<span class="glyphicon glyphicon-play"></span> <?php echo $lang['PLAY'];?>';
-                        } else {
-                          document.getElementsByTagName('audio')[0].play();
-                          document.getElementById('playPause').innerHTML = '<span class="glyphicon glyphicon-pause"></span> <?php echo $lang['PAUSE'];?>';
-                        }
-                    },
-                    error: function(xhr, status) {
-                        console.log(status);
-                    }
-                });
-            });
+            /* Do nothing */
         });
     </script>
 
     <div id="audioDiv" class="audio-player">
-      <audio id="audio" src="/public/beep.mp3"></audio>
+      <audio id="audio" src="<?php echo $helper->urlBase(); ?>/public/beep.mp3"></audio>
       <a id="playPause" href="javascript:playPause('<?php echo $lang['PLAY'];?>', '<?php echo $lang['PAUSE'];?>');" class="btn btn-primary" style="float: left;"><span class="glyphicon glyphicon-play"></span> <?php echo $lang['PLAY'];?></a>
       <a href="javascript:closePopUp();" class="btn btn-danger" style="float: right;">&times; <?php echo $lang['CLOSE'];?></a>
     </div>
+    
+    <script type="text/javascript">
+    <?php
+			$lang_detected = "en";
+			if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+				$lang_detected = $_SESSION['lang'];
+			}
+			
+			if($lang_detected == 'spanish') $lang_detected = "es";
+			if($lang_detected == 'english') $lang_detected = "en";
+			
+			if($lang_detected != 'es' && $lang_detected != 'en') {
+				$lang_detected = "en";
+			}
+			
+			
+			echo "var current_language = '" . $lang_detected . "';";
+			$lang_detected_ext = "-";
+			if($lang_detected == "es") {
+				echo "var current_language_ext = 'spanish';";
+				$lang_detected_ext = "spanish";
+			}
+			else {
+				echo "var current_language_ext = 'english';";
+				$lang_detected_ext = "english";
+			}
+			
+		?>
+		</script>
+		
+    <?php
+	include(dirname(__FILE__). '/../core/speachJavascritpHelpers.php');
+	?>
 
     <div class='tableInformation tableRecibidos'>
         <table>
@@ -100,8 +108,8 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
             <tr>
                 <td></td>
                 <td><?php echo isset($vars['INBOX']) ? $lang['FROM'].':' : $lang['TO'].':';  ?></td>
-                <td><?=$lang['SUBJECT']?>:</td>
-                <td><?=$lang['DATE']?>:</td>
+                <td><?php echo $lang['SUBJECT']; ?>:</td>
+                <td><?php echo $lang['DATE']; ?>:</td>
                 <td></td>
             </tr>
             <?php
@@ -121,7 +129,7 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
                     <td style="cursor: pointer; cursor: hand;"><?php echo isset($item['From']) ? normalizeEmail($item['From']) : normalizeEmail($item['To']);  ?></td>
                     <td style="cursor: pointer; cursor: hand;"><?php echo $item['Subject'];
                      echo isset($item['attachments']) ? '<img class="icono" src="'.$helper->urlBase().'/public/img/icons/clip.png" alt="Clip" />': '';?></td>
-                    <td style="cursor: pointer; cursor: hand;"><?php echo $item['Date']?></td>
+                    <td style="cursor: pointer; cursor: hand;"><?php echo $item['Date']; ?></td>
                     <td onclick="event.stopImmediatePropagation();">
 
                       <div style='text-align: center;'>
@@ -132,18 +140,18 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
 
                       <div class='overlay-container overlay-container<?php echo $i; ?>'>
                         <div class='window-container zoomin'>
-                          <span style="font-size: 130%; text-transform: uppercase; font-weight: bold;"><?=$lang['DELETE']?></span>
+                          <span style="font-size: 130%; text-transform: uppercase; font-weight: bold;"><?php echo $lang['DELETE']; ?></span>
                           <br>
-                          <p><?=$lang['ARE_YOU_SURE_YOU_WANT_TO_DELETE_MESSAGE']?></p>
+                          <p><?php echo $lang['ARE_YOU_SURE_YOU_WANT_TO_DELETE_MESSAGE']; ?></p>
                           <br>
                           <hr>
                           <a href='<?php echo $helper->url('mails', 'delete', $key, $action);?>'>
                             <div class='page-scroll btn btn-danger btn-lg' style='width:40%' title="<?php echo $lang['DELETE_MESSAGE'];?>">
-                              <span class="glyphicon glyphicon-trash"></span> <?=$lang['DELETE']?>
+                              <span class="glyphicon glyphicon-trash"></span> <?php echo $lang['DELETE']; ?>
                             </div>
                           </a>
                           <div id='cancel<?php echo $i; ?>' class='page-scroll  btn btn-success btn-lg' style='width:40%' title="<?php echo $lang['CANCEL_DELETION'];?>">
-                            <span class="glyphicon glyphicon-remove"></span> <?=$lang['CANCEL']?>
+                            <span class="glyphicon glyphicon-remove"></span> <?php echo $lang['CANCEL']; ?>
                           </div>
                         </div>
                       </div>
@@ -165,7 +173,7 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
                     ?>
                      <a href='<?php echo $helper->url('mails','getAll',isset($vars['SENT']) ? 'SENT' : 'INBOX',$vars['ActualPage']-1); ?>' title="<?php echo $lang['SHOW_PREVIOUS_PAGE'];?>">
                         <div class='page-scroll btn btn-success btn-lg paginate'>
-                            <span class="glyphicon glyphicon-menu-left"></span> <?=$lang['PREVIOUS']?>
+                            <span class="glyphicon glyphicon-menu-left"></span> <?php echo $lang['PREVIOUS']; ?>
                         </div>
                     </a>
                     <?php
@@ -179,7 +187,7 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
                     ?>
                     <a href='<?php echo $helper->url('mails','getAll', isset($vars['SENT']) ? 'SENT' : 'INBOX' ,$vars['ActualPage']+1); ?>' title="<?php echo $lang['SHOW_NEXT_PAGE'];?>">
                         <div class='page-scroll btn btn-success btn-lg paginate'>
-                            <?=$lang['NEXT']?> <span class="glyphicon glyphicon-menu-right"></span>
+                            <?php echo $lang['NEXT']; ?> <span class="glyphicon glyphicon-menu-right"></span>
                         </div>
                     </a>
                     <?php
@@ -189,4 +197,6 @@ function buildAudioPlay($selectedLanguage, $inbox, $item, $message, $from, $to, 
             </div>
         </div>
     </div>
+    
+    
 </div>

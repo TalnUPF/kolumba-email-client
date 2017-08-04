@@ -68,10 +68,7 @@ $lang['MESSAGE'] = 'Mensaje';
 $lang['WITH_SUBJECT'] = 'con asunto';
 $lang['THE_DAY'] = 'el día';
 
-$lang['SIMPLE_TEXT'] = 'Texto Simple';
 $lang['PICTO'] = 'Picto';
-$lang['PICTO_2'] = 'Picto 2';
-$lang['PICTO_3'] = 'Picto 3';
 
 $lang['EMPTY_MESSAGE'] = 'Mensaje vacío.';
 $lang['TEXT2SPEECH_LANGUAGE'] = 'spanish';
@@ -96,7 +93,8 @@ $lang['TEMPLATE_3_TITLE'] = 'Fallo adjunto';
 $lang['TEMPLATE_3_TEXT'] = 'No he podido abrir el fichero adjunto.';
 
 
-$lang['COPYRIGHT'] = 'Ariadna Servicios Informáticos';
+$lang['COPYRIGHT'] = 'TALN-UPF';
+$lang['COPYRIGHT_URL'] = 'https://www.upf.edu/web/taln';
 
 $lang['CONTACT_NAME'] = 'Nombre';
 $lang['CONTACT_EMAIL'] = 'Email';
@@ -119,4 +117,23 @@ $lang['WEB_SPEECH_API_INFO_DENIED'] = 'El permiso para utilizar micrófono fue d
 $lang['WEB_SPEECH_API_INFO_BLOCKED'] = 'El permiso para utilizar micrófono está bloqueado. Para cambiarlo, vaya a chrome://settings/contentExceptions#media-stream';
 $lang['WEB_SPEECH_API_INFO_UPGRADE'] = 'La API de Reconocimiento de Voz Web no está soportada por este navegador. Actualice a la versión 25 o posterior de <a href="http://www.google.com/chrome">Chrome</a>.';
 $lang['WEB_SPEECH_API_LANG'] = 'es-ES';
+
+$lang['BROWSER_SPEECH_TEXT'] = 'Texto';
+$lang['BROWSER_SPEECH_READING'] = 'Leyendo';
+$lang['BROWSER_SPEECH_ON_PAUSE'] = 'Pausa';
+$lang['BROWSER_SPEECH_WHOLE_EMAIL_READ'] = "Leer todo";
+$lang['BROWSER_SPEECH_COMMAND_PLAY'] = 'Leer';
+$lang['BROWSER_SPEECH_COMMAND_PAUSE'] = 'Pausar';
+$lang['BROWSER_SPEECH_COMMAND_CLOSE'] = 'Cerrar';
+$lang['BROWSER_SPEECH_ENGINE'] = 'Generado por';
+$lang['BROWSER_SPEECH_CONTENT'] = 'Contenido';
+$lang['BROWSER_SPEECH_VOICE'] = 'Voz';
+$lang['LOADING_SPEECH_INTERFACE'] = "Cargando";
+
+$lang['SIMPLIFY_ERROR'] = "El servicio no contesta, intentalo mas tarde!";
+$lang['PICTO_ERROR'] = "El servicio no contesta, intentalo mas tarde!";
+$lang['BUTTON_SIMPLIFY'] = "Simplificar";
+$lang['BUTTON_ORIGINAL_TEXT'] = "Texto original";
+$lang['LANGUAGE_DETECTED_INTRO'] = "Lenguage del correo";
+$lang['HEADER_PICTOGRAM_SET'] = "Conjunto pictogramas";
 ?>

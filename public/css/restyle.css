@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+/* Reduce the size of buttons on email view */
+.btnReduced {
+	padding: 0px 0px;
+}
+
+.btnDisabled {
+	background: red;
+}
+
+.btnReduced:hover + .afterBtnReduced {
+    background: #ccc
+}
+
+#pictogramOutput {
+  border: 5px solid;
+  padding: 5px;
+  border-radius: 10px;
+  border-color: #18bc9c;
+  margin-bottom: 15px;
+}
+

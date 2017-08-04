@@ -32,6 +32,22 @@ abstract class GoogleHelper {
         $client->addScope(Google_Service_Gmail::GMAIL_MODIFY);
         $client->addScope('http://www.google.com/m8/feeds/');
         $client->addScope('https://www.googleapis.com/auth/userinfo.email');
+        /*
+        $client->setScopes(array(
+        		'https://www.googleapis.com/auth/userinfo.email',
+        		'https://apps-apis.google.com/a/feeds/groups/',
+        		'https://apps-apis.google.com/a/feeds/alias/',
+        		'https://apps-apis.google.com/a/feeds/user/',
+        		'https://www.google.com/m8/feeds/',
+        		'https://www.google.com/m8/feeds/user/'
+        ));
+        */
+//test
+        $client->addScope(Google_Service_Gmail::GMAIL_LABELS);
+        $client->addScope(Google_Service_Gmail::GMAIL_INSERT);
+        $client->addScope(Google_Service_Gmail::GMAIL_READONLY);
+     //endtest  
+     
         $client->setIncludeGrantedScopes(true);
 
         $client->setAccessType('offline');

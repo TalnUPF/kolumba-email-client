@@ -171,13 +171,19 @@ class MailsModel {
     function listMessages($opt_param, &$pageToken) {
       $client = unserialize($_SESSION['client']);
       $service  = new Google_Service_Gmail($client);
-      $user = 'me';
+      error_log("listMessages");
+      //error_log(print_r($service,true));
+      
+
+	$user = 'me';
       $messages = array();
       try {
         if ($pageToken) {
           $opt_param['pageToken'] = $pageToken;
         }
+        error_log("reading messages...");
         $messagesResponse = $service->users_messages->listUsersMessages($user, $opt_param);
+//	error_log(print_r($messagesResponse,true));
         if ($messagesResponse->getMessages()) {
           //array_push($messages, $messagesResponse->getMessages());
           $messages = array_merge($messages, $messagesResponse->getMessages());
